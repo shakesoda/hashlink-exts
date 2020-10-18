@@ -1,6 +1,9 @@
 # hashlink-exts
 Backup of internal hashlink modules. Might be useful if you're brave.
 
+# Status
+Be forewarned, there are significant API gaps in both `exlua` and `exphysfs` as of this moment. This will be addressed over time as needed.
+
 # Documentation
 Currently everything in here is undocumented except for the comments in the haxe files.
 
