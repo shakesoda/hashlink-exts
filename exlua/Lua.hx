@@ -109,7 +109,6 @@ abstract LuaState(LuaState_Internal) {
 	public inline function check_boolean(idx: Int) return LuaInternal.check_boolean(this, idx);
 	public inline function check_string(idx: Int) return @:privateAccess String.fromUCS2(LuaInternal.check_string(this, idx));
 
-	/** note: does not currently support results **/
 	public inline function check_function(idx: Int): (?args: Array<LuaValue>)->Array<LuaValue> {
 		if (!LuaInternal.is_function(this, idx)) {
 			throw new haxe.Exception('argument $idx must be a function');
@@ -131,7 +130,7 @@ abstract LuaState(LuaState_Internal) {
 					}
 				}
 			}
-			LuaInternal.pcall(this, args.length, -1 /* LUA_MULTRET */);
+			LuaInternal.pcall(this, args != null ? args.length : 0, -1 /* LUA_MULTRET */);
 			final count = LuaInternal.get_top(this) - top;
 			final ret = [];
 			for (idx in 0...count) {
